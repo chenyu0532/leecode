@@ -4,3 +4,13 @@
 
 // 输入: "Let's take LeetCode contest"
 // 输出: "s'teL ekat edoCteeL tsetnoc" 
+var reverseWords = function(s) {
+	let res = "";
+    let t = s.split(" ");
+    for(let v of t){
+    	let tt = v.split("").reverse().join("");
+    	res += (tt + " ");
+    }
+    return res.replace(/(^\s*)|(\s*$)/g, "");
+};
+console.log(reverseWords("Let's take LeetCode contest"));
