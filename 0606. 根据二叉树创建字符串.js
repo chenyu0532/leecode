@@ -35,6 +35,24 @@
  * @param {TreeNode} t
  * @return {string}
  */
+function TreeNode(val) {
+	this.val = val;
+	this.left = this.right = null;
+}
+
 var tree2str = function(t) {
-    
+	if(!t) return "";
+	let res = t.val.toString();
+	let left = t.left;
+	let right = t.right;
+	if(left){
+		res += '(' + tree2str(t.left) + ')';
+	}
+	if(right){
+		if(!left){
+			res += "()";
+		}
+		res += '(' + tree2str(t.right) + ')';
+	}
+	return res;
 };
