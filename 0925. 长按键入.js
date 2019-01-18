@@ -36,7 +36,6 @@ var isLongPressedName = function(name, typed) {
 			if(name[i] === typed[j]){
 				cnt++;
 				index = j + 1;
-				//console.log(index)
 				break;
 			}
 		}
