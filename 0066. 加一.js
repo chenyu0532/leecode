@@ -19,9 +19,10 @@ var plusOne = function(digits) { //999 159 199
 	    	return digits;
 	    }
 	    digits[i] = 0;
+
 	}
 	digits.unshift(1);
 	return digits;
 
 };
-console.log(plusOne([1,5,9]));
+console.log(plusOne([9,9,9]));
