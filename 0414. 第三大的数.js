@@ -17,6 +17,27 @@
 // 解释: 注意，要求返回第三大的数，是指第三大且唯一出现的数。
 // 存在两个值为2的数，它们都排第二。
 var thirdMax = function(nums) {
-    
+    nums.sort(function(a,b){
+    	return b - a;
+    });
+    let fir = nums[0];
+    let sec;
+    let index = 0;
+    let flag = false;
+    for(let i = 1; i < nums.length; i++){
+    	if(!flag && nums[i] < fir){
+    		sec = nums[i];
+    		flag = true;
+    		continue;
+    	}
+    	if(nums[i] < fir && nums[i] < sec){
+    		index++;
+    		if(index === 1){
+    			return nums[i];
+    		}
+    	}
+
+    }
+    return nums[0];
 };
-console.log(thirdMax([2, 2, 3, 1]));
+console.log(thirdMax([3, 2, 1]));
