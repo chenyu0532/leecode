@@ -25,7 +25,7 @@
 /////////////////////这个实在不会///////////////////////////
 var findPairs = function(nums, k) {
 	if(k < 0){
-		return 0
+		return 0;
 	}
     let map = new Map();
     let cnt = 0;
