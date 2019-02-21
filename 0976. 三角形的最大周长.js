@@ -24,7 +24,6 @@ var largestPerimeter = function(A) {
     A.sort(function(a, b){
     	return a- b;
     });
-    console.log(A);
     for(let i = A.length - 1; i >= 2; i--){
     	if(A[i - 1] + A[i - 2] > A[i]){
     		return A[i] + A[i - 1] + A[i - 2];
