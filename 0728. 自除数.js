@@ -34,7 +34,6 @@ var selfDividingNumbers = function(left, right) {
     	}
     }
     return arr;
-    console.log(arr);
 };
 console.log(selfDividingNumbers(1, 22));
 
