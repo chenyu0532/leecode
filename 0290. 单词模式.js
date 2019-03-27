@@ -20,10 +20,25 @@
 // 说明:
 // 你可以假设 pattern 只包含小写字母， str 包含了由单个空格分隔的小写字母。
 var wordPattern = function(pattern, str) {
+	let strr = str.split(' ');
+	if(pattern.length != strr.length) return false;
+	let map = new Map();
     for(let i = 0; i < pattern.length; i++) {
-    	
+    	if(map.has(pattern[i])) {
+    		if(map.get(pattern[i]) != strr[i]) {
+    			return false;
+    		}
+    	} else {
+    		map.set(pattern[i], strr[i]);
+    		for(let j = 0; j < i; j++) {
+    			if(map.get(pattern[i]) == map.get(pattern[j])) {
+    				return false;
+    			}
+    		}
+    	}
     }
+    return true;
 };
-console.log(wordPattern("abba", "dog cat cat dog"))
+console.log(wordPattern("abba", "dog dog dog dog"))
 
 
