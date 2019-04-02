@@ -17,8 +17,8 @@ getDistance = function(pa, pb) {
 }
 var numberOfBoomerangs = function(points) {
 	let res = 0;
-	let map = new Map();
     for(let i = 0; i < points.length; i++) {
+    	let map = new Map();
     	for(let j = 0; j < points.length; j++) {
     		if(i === j) continue;
     		let dis = this.getDistance(points[i], points[j]);
@@ -26,15 +26,15 @@ var numberOfBoomerangs = function(points) {
     			map.set(dis, map.get(dis) + 1);
     			res = map.get(dis);
     		} else {
-    			map.set(dis, 1);
+    			map.set(dis, 1); 
     		}
     	}
+    	console.log(map);
     	// console.log(map);
-    	// for(let val of map.values()) {
-     //        res += val * (val - 1);
-     //    }
-     //    console.log(res);
-        map.clear();
+    	for(let val of map.values()) {
+            res += val * (val - 1);
+        }
+        console.log(res);
     }
     return res ;
 };
