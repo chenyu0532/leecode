@@ -7,4 +7,24 @@
 
 // 注意空字符串可被认为是有效字符串。
 
-//利用栈的属性来解答
+var isValid = function(s) {
+    const ob = {
+    	'(':')',
+    	'[':']',
+    	'{':'}',
+    }
+    let stack = [];
+    for(let i = 0; i < s.length; i++) {
+    	const _s = s[i];
+    	if (ob[_s]){
+    		console.log(ob[_s]);
+    		stack.push(ob[_s]);
+    	} else {
+    		if (_s != stack.pop()) {
+    			return false;
+    		}
+    	}
+    }
+    return stack.length === 0;
+};
+console.log(isValid('(('));
