@@ -29,32 +29,57 @@ class linklist{
 
 		return this;
 	}
-	insert(position, value){
-		const newNode = new linklistNode(value);
-		if(position === 0){ //头结点插入
-			newNode.next = this.head;
-			this.head = newNode;
-		}else{
-			let index = 0;
-			let previous;
-			let current = this.head;
-			while(index < position){
-				previous = current;
-				current = current.next;
-				index++;
-			}
-			previous.next = newNode;
-			newNode.next = current;
+	printList(){
+		let current = this.head;
+		while(current !==null)
+		{
+			console.log(current.value)
+			current = current.next;
 		}
-		length++;
 	}
 }
 var mergeTwoLists = function(l1, l2) {
-    let list1 = new LinkList();
-    let list2 = new LinkList();
-    for(let i = 0; i < l1.length; i++){
-    	list1.append(l1[i]);
-    }
+	if (l1 === null) return l2;
+	if (l2 === null) return l1;
+	let link3 = new linklist();
+	let cur = link3;
 
+	let cur1 = l1.head;
+	let cur2 = l2.head;
+	while(cur1 && cur2) {
+		if (cur1.value <= cur2.value) {
+			cur.append(cur1.value);
+			cur1 = cur1.next;
+		} else {
+			cur.append(cur2.value);
+			cur2 = cur2.next;
+		}
+	}
+	if (cur1 === null) {
+		while(cur2) {
+			cur.append(cur2.value);
+			cur2 = cur2.next;
+		}
+	}
+	if (cur2 === null) {
+		while(cur1) {
+			cur.append(cur1.value);
+			cur1 = cur1.next;
+		}
+	}
+	cur.printList();
+	return cur;
 };
-mergeTwoLists([1,2,4], [1,3,4]);
+let link1 = new linklist();
+link1.append(1);
+link1.append(2);
+link1.append(4);
+link1.append(5);
+link1.append(6);
+
+let link2 = new linklist();
+link2.append(1);
+link2.append(3);
+link2.append(4);
+
+console.log(mergeTwoLists(link1, link2));
