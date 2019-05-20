@@ -22,10 +22,10 @@ var levelOrder = function(root) {
     	let len = arr.length;
     	for(let i = 0; i < len; i++) {
     		let node = arr.shift();
-    		for(let n of node.children) {
-    			arr.push(n);
-    		}
 			tempArr.push(node.val);
+            for(let n of node.children) {
+                arr.push(n);
+            }
     	}
     	result.push(tempArr);
     }
