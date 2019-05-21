@@ -19,7 +19,15 @@
  */
 var pathSum = function(root, sum) {
     if(!root) return 0;
-    return psum(root, sum) + pathSum(root.left, sum) + pathSum(root.right, sum);
+    let sum1 = 0, sum2 = 0, sum3 = 0;
+    sum1 = psum(root, sum);
+    if (root.left) {
+    	sum2 = pathSum(root.left, sum);
+    }
+    if (root.right) {
+    	sum3 = pathSum(root.right, sum)
+    }
+    return sum1 + sum2 + sum3;
 };
 var psum = function(root, sum) {
     if (!root) return 0;
@@ -27,4 +35,3 @@ var psum = function(root, sum) {
     let temp = (sum === value? 1: 0);
     return temp + psum(root.left, sum - value) + psum(root.right, sum - value);
 };
-
