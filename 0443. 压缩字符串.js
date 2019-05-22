@@ -26,7 +26,22 @@ var compress = function(chars) {
     // console.log(map);
     // return map.size * 2;
     //************************************************************
-    
-
+    let i = 0, j = 0;
+    while(i < chars.length) {
+        let count = 0;
+        let current = chars[i];
+        while (i < chars.length && chars[i] === current) {
+            i++;
+            count++;
+        }
+        chars[j++] = current;
+        if(count > 1) { // 1个不显示数量
+            let str = count.toString();
+            for(let k = 0; k < str.length; k++) {
+                chars[j++] = str[k];
+            }
+        }
+    }
+    return j;
 };
 console.log(compress(["a","a","b","b","c","c","c"]));
