@@ -47,18 +47,22 @@
  * @return {character}
  */
 var nextGreatestLetter = function(letters, target) {
+    if(letters[letters.length - 1] <= target) {
+        return letters[0];
+    }
     let l = 0;
     let r = letters.length - 1;
     while(l <= r) {
     	let mid = Math.floor((l + r) / 2);
+        console.log(mid)
     	if (target < letters[mid]) {
     		r = mid - 1;
     	} else {
     		l = mid + 1;
     	}
     }
-    return letters[l % letters.length]
+    return letters[l];
 };
-//console.log(nextGreatestLetter(["c", "f", "j"], "g"));
-console.log(nextGreatestLetter(["a", "b", "j"], "z"));
+console.log(nextGreatestLetter(["c", "f", "j"], "j"));
+//console.log(nextGreatestLetter(["a", "b", "j"], "z"));
 
