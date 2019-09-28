@@ -26,7 +26,6 @@ var letterCasePermutation = function(S) {
     	if (reg.test(S[i])) {
     		for(let j = res.length; j > 0; j--) {
     			let d = res.shift();
-    			console.log(d)
     			let left = d.substring(0, i);
     			let right = d.substring(i + 1);
     			res.push(left + S[i].toLowerCase() + right);
