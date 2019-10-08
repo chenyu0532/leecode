@@ -4,18 +4,21 @@
 // 输入: points = [[0,0],[0,1],[1,0],[0,2],[2,0]]
 // 输出: 2
 
-
+// 注意:
 //     3 <= points.length <= 50.
 //     不存在重复的点。
 //      -50 <= points[i][j] <= 50.
 //     结果误差值在 10^-6 以内都认为是正确答案。
 
-//////////////////没有意义的一道题////////////////////////
 
-// var largestTriangleArea = function(points) {
+/**
+ * @param {number[][]} points
+ * @return {number}
+ */
+
+ ///////////////////垃圾题目//////////////////////
+var largestTriangleArea = function(points) {
     
-// };
-// console.log(largestTriangleArea([[0,0],[0,1],[1,0],[0,2],[2,0]]));
-
+};
 
 
