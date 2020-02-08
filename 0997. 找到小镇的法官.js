@@ -42,13 +42,13 @@
  */
 var findJudge = function(N, trust) {
 	let a = new Array();
-	for(let i = 0; i < trust.length; i++) {
+	for(let i = 0; i < N; i++) {
 	 	a[i] = new Array();
 		for(let j = 0; j < 2; j++) {
 			a[i][j] = 0;
 		}
 	}
-
+	console.log(a);
 	for(let i = 0; i < trust.length; i++) {
 		const person = trust[i];
 		a[person[0] - 1][0]++;
@@ -62,7 +62,7 @@ var findJudge = function(N, trust) {
 	}
 	return -1;
 };
-console.log(findJudge(4, [[1,3],[1,4],[2,3],[2,4],[4,3]]));
+console.log(findJudge(2, [[1,2]]));
 
 
 
