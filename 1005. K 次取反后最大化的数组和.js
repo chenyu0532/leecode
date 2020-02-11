@@ -27,22 +27,39 @@
  * @param {number} K
  * @return {number}
  */
+
+ //K次排序，不好
+// var largestSumAfterKNegations = function(A, K) {
+//     for(let i = 0; i < K; i++) {
+//     	A.sort(function(a, b) {
+//     		if (a < b) {
+//     			return -1;
+//     		} else if(a > b) {
+//     			return 1;
+//     		} else {
+//     			return 0;
+//     		}
+//     	});
+//     	A[0] = -A[0];
+//     }
+//     return A.reduce(function(prev, cur) {
+//     	return prev + cur;
+//     });
+// };
+
 var largestSumAfterKNegations = function(A, K) {
-    for(let i = 0; i < K; i++) {
-    	A.sort(function(a, b) {
-    		if (a < b) {
-    			return -1;
-    		} else if(a > b) {
-    			return 1;
-    		} else {
-    			return 0;
-    		}
-    	});
-    	A[0] = -A[0];
+    A.sort((a, b) => a - b);
+    let index = 0;
+    while(K) {
+        A[index] = -A[index];
+        if (index + 1 < A.length && A[index + 1] < A[index]) {
+            index++;
+        }
+        K--;
     }
     return A.reduce(function(prev, cur) {
-    	return prev + cur;
-    });
+        return prev + cur;
+    }, 0);
 };
 
 console.log(largestSumAfterKNegations([2,-3,-1,5,-4], 2));
