@@ -28,12 +28,27 @@
 //     return nums.length;
 // };
 var searchInsert = function(nums, target) {
-    let i = nums.findIndex(function(value, index, nums){
-    	return value >= target;
-    });
-    if(i === -1){
-    	return nums.length;
+    // let i = nums.findIndex(function(value, index, nums){
+    // 	return value >= target;
+    // });
+    // if(i === -1){
+    // 	return nums.length;
+    // }
+    // return i;
+
+    // 二分法
+    let left = 0;
+    let right = nums.length - 1;
+    while(left <= right) {
+    	let mid = Math.floor((left + right) / 2);
+    	if (nums[mid] === target) {
+    		return mid;
+    	} else if(nums[mid] < target) {
+    		left = mid + 1;
+    	} else {
+    		right = mid - 1;
+    	}
     }
-    return i;
+    return 0;
 };
-//或者用二分法
+console.log(searchInsert([1,3,4,5,6], 5))

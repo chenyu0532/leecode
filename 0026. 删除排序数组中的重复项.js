@@ -26,12 +26,38 @@
 //     print(nums[i]);
 // }
 var removeDuplicates = function(nums) {
-	let count = nums.length;
-	for(let i = 0; i < nums.length; i++){
-		if(nums[i] === nums[i + 1]){
-			nums.splice(i, 1);
-			i--;
+	// 利用数组的splice改变原数组的特性
+	// let count = nums.length;
+	// for(let i = 0; i < nums.length; i++){
+	// 	if(nums[i] === nums[i + 1]){
+	// 		nums.splice(i, 1);
+	// 		i--;
+	// 	}
+	// }
+	// return nums.length;
+
+	//原理：当遍历到不重复的元素时，需要把当前元素向前移动n个重复元素的位置
+	// let len = nums.length;
+	// let count = 0;
+	// for(let i = 1; i < len; i++) {
+	// 	if (nums[i] === nums[i - 1]) {
+	// 		count++;
+	// 	} else {
+	// 		nums[i - count] = nums[i];
+	// 	}
+	// 	console.log(nums)
+	// }
+	// return len - count;
+
+	
+	let count = 1;
+	let len = nums.length;
+	for(let i = 1; i < len; i++) {
+		if(nums[i] !== nums[i - 1]) {
+			nums[count] = nums[i];
+			count++;
 		}
 	}
+	return count;
 };
-console.log(removeDuplicates([1,1,2]))
+console.log(removeDuplicates([0,0,1,1,1,2,2,3,3,4]))
