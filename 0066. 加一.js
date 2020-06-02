@@ -24,5 +24,9 @@ var plusOne = function(digits) { //999 159 199
 	digits.unshift(1);
 	return digits;
 
+	// 这个适合数字值在安全值以内的
+	// let str = digits.join('');
+	// let n = (Number.parseInt(str) + 1).toString();
+	// return n.split('');
 };
-console.log(plusOne([9,9,9]));
+console.log(plusOne([2,1,3,9,9]));
