@@ -16,28 +16,35 @@
 // 输出: 1
 // 解释: 注意，要求返回第三大的数，是指第三大且唯一出现的数。
 // 存在两个值为2的数，它们都排第二。
-var thirdMax = function(nums) {
-    nums.sort(function(a,b){
-    	return b - a;
-    });
-    let fir = nums[0];
-    let sec;
-    let index = 0;
-    let flag = false;
-    for(let i = 1; i < nums.length; i++){
-    	if(!flag && nums[i] < fir){
-    		sec = nums[i];
-    		flag = true;
-    		continue;
-    	}
-    	if(nums[i] < fir && nums[i] < sec){
-    		index++;
-    		if(index === 1){
-    			return nums[i];
-    		}
-    	}
 
+// var thirdMax = function(nums) {
+//     let set = new Set(nums);
+//     let arr = [...set];
+//     arr.sort((a, b)=> b - a);
+//     if (arr.length < 3) {
+//     	return arr[0];
+//     } 
+//     return arr[2];
+// };
+
+var thirdMax = function(nums) {
+	// 最大值 第二大值  第三大值
+    let max1 = max2 = max3 = -Infinity;
+    let arr = [...new Set(nums)];
+    for(let i = 0; i < arr.length; i++) {
+    	const v = arr[i];
+    	if (v > max1) {
+    		max3 = max2;
+    		max2 = max1;
+    		max1 = v;
+    	} else if (v > max2) {
+    		max3 = max2;
+    		max2 = v;
+    	} else if(v > max3) {
+    		max3 = v;
+    	}
     }
-    return nums[0];
+    return Number.isFinite(max3)? max3: max1; 
+
 };
-console.log(thirdMax([3, 2, 1]));
+console.log(thirdMax([2, 2, 3, 1]));

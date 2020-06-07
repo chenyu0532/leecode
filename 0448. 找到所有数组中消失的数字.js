@@ -12,23 +12,39 @@
 // 输出:
 // [5,6]
 
-//首先一点：最好不要用排序，因为速度会变慢
+//首先一点：最好不要用排序，因为在数组很大的时候速度会变慢
 
-//discuss里的方法太技巧了。。。以下是：
 var findDisappearedNumbers = function(nums) {
-    for(let i = 0; i < nums.length; i++){
-    	let index = Math.abs(nums[i]) - 1;
-    	if(nums[index] > 0){
-    		nums[index] = -nums[index];
-    	}
+    if (nums.length === 0) return [];
+    let map = new Map();
+    for(let i = 0; i < nums.length; i++) {
+        map.set(nums[i], true);
     }
-    console.log(nums)
-    let result = [];
-    for(let i = 0; i < nums.length; i++){
-    	if(nums[i] > 0){
-    		result.push(i + 1);
-    	}
+    let res = [];
+    for(let i = 1; i <= nums.length; i++) {
+        if (!map.get(i)) {
+            res.push(i);
+        }
     }
-    return result;
+    return res;
 };
+
+// 原地哈希(其实跟上面方法差不多，只是不另外开辟空间而已)
+// 推荐上述方法，易于理解
+// var findDisappearedNumbers = function(nums) {
+//     if (nums.length === 0) return [];
+//     for(let i = 1; i < nums.length; i++) {
+//         const v = nums[i];
+//         if(nums[v - 1] > 0) {
+//             nums[v - 1] *= -1;
+//         }
+//     }
+//     let res = [];
+//     for(let i = 1; i <= nums.length; i++) {
+//         if (nums[i - 1] > 0) {
+//             res.push(i);
+//         }
+//     }
+//     return res;
+// };
 console.log(findDisappearedNumbers([4,3,2,7,8,2,3,1]))
