@@ -22,27 +22,35 @@
 //     数组的长度不超过10,000。
 //     所有输入的整数的范围在 [-1e7, 1e7]。
 
-/////////////////////这个实在不会///////////////////////////
 var findPairs = function(nums, k) {
-	if(k < 0){
-		return 0;
+	if(k < 0) return 0;
+	let set1 = new Set();
+	let set2 = new Set();
+	for(let i = 0; i < nums.length; i++) {
+		const v = nums[i];
+		if (set2.has(v - k)) {
+			set1.add(v - k);
+		}
+		if (set2.has(v + k)) {
+			set1.add(v + k);
+		}
+		set2.add(v);
 	}
-    let map = new Map();
-    let cnt = 0;
-    nums.forEach(value => {
-    	map.has(value)? map.set(value, map.get(value) + 1): map.set(value, 1);
-    });
-    [...map.keys()].forEach(key => {
-    	if(k === 0){
-    		if(map.get(key) >= 2){
-    			cnt++;
-    		}
-    	} else {
-    		if(map.has(key + k)){
-    			cnt++;
-    		}
-    	}
-    });
-    return cnt;
+	return set1.size;
 };
-console.log(findPairs([1, 2, 3, 4, 5], 1))
+
+// var findPairs = function(nums, k) {
+// 	if(k < 0) return 0;
+// 	let count = 0;
+// 	nums.sort((a, b)=> a - b);
+// 	for(let i = 0; i < nums.length - 1; i++) {
+// 		for(let j = i + 1; j < nums.length; j++) {
+// 			if (nums[j] - nums[i] > k) break;
+// 			if (nums[j] - nums[i] === k) {
+// 				count++;
+// 			}
+// 		}
+// 	}
+// 	return count;
+// };
+console.log(findPairs([1, 3, 1, 5, 4], 0))
