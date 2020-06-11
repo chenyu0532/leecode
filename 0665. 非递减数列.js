@@ -15,18 +15,12 @@
 
 //[1,2,3,2,3,6]
 var checkPossibility = function(nums) {
+    if(nums.length < 3) return true;
     let cnt = 0;
-    for(let i = 0; i < nums.length; i++){
-    	if(nums[i] < nums[i - 1]){
+    for(let i = 0; i < nums.length; i++) {
+    	if(nums[i] > nums[i + 1]) {
     		cnt++;
-    		if(cnt > 1) {
-    			return false;
-    		}
-    		if(nums[i] <= nums[i - 2] && nums[i + 1] <= nums[i - 1]){
-    			return false;
-    		}
     	}
     }
-    return true;
 };
-console.log(checkPossibility(4,3,2));
+console.log(checkPossibility([1,2,3,2,3,6]));
