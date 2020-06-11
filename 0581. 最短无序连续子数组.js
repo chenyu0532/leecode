@@ -12,7 +12,7 @@
 //     输入的数组长度范围在 [1, 10000]。
 //     输入的数组可能包含重复元素 ，所以升序的意思是<=。
 
-//原来是复制出一个排序号的数组，跟原数组相比较。。。。66666大神果然多
+//复制出一个排序号的数组，跟原数组相比较
 var findUnsortedSubarray = function(nums) {
     let clone = [...nums];
     clone.sort(function(a, b){
@@ -34,4 +34,28 @@ var findUnsortedSubarray = function(nums) {
     }
     return (begin === end) ? 0 : (end- begin + 1);
 };
+
+// 寻找左右边界
+// var findUnsortedSubarray = function(nums) {
+//     let len = nums.length;
+//     let max = nums[0];
+//     let min = nums[len - 1];
+//     let l = 0;
+//     let r = len - 1;
+//     for(let i = 0; i < len; i++) {
+//     	if (max > nums[i]) {
+//     		r = i;
+//     	} else {
+//     		max = nums[i];
+//     	}
+//     }
+//     for(let i = len - 1; i >= 0; i--) {
+//     	if (min < nums[i]) {
+//     		l = i;
+//     	} else {
+//     		min = nums[i];
+//     	}
+//     }
+//     return r - l + 1;
+// };
 console.log(findUnsortedSubarray([2, 6, 4, 8, 10, 9, 15]));
