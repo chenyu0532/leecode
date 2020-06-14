@@ -15,6 +15,11 @@
 // 注意：
 //     cost 的长度将会在 [2, 1000]。
 //     每一个 cost[i] 将会是一个Integer类型，范围为 [0, 999]。
+
+// 动态规划：开始的时候直接到第0级花费cost[0]，或者直接到第一级花费cost[1]
+///跨到第二级或者直接从0到达2，花费cost[0] + cost[2]或者花费cost[1] + cost[2]
+///跨到第n级则后者需要cost[n - 2] + cost[n]或者花费cost[n - 1] + cost[n]
+///求最小值是：Math.min(cost[n - 1], cost[n - 2]) + cost[n];
 var minCostClimbingStairs = function(cost) {
     for(let i = 2; i < cost.length; i++){
     	cost[i] += Math.min(cost[i - 1], cost[i - 2]);
