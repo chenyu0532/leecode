@@ -36,8 +36,6 @@ var findShortestSubArray = function(nums) {
 		}
 		max = Math.max(max, count.get(nums[i])); //求得出现次数最多的元素
 	}
-	console.log(count);
-	console.log(max);
 	let res = Number.MAX_VALUE;
 	for(let [key, value] of count){
 		if(value === max){

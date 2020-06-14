@@ -13,14 +13,21 @@
 
 // 说明:  n 的范围为 [1, 10,000]。
 
-//[1,2,3,2,3,6]
+//[1,2,3,2,3,6]  [3, 4, 2, 3]  [-1, 4, 2, 3]
 var checkPossibility = function(nums) {
     if(nums.length < 3) return true;
     let cnt = 0;
-    for(let i = 0; i < nums.length; i++) {
+    for(let i = 0; i < nums.length - 1; i++) {
     	if(nums[i] > nums[i + 1]) {
-    		cnt++;
+    		cnt++;		
+    		if (cnt > 1) return false;
+    		if (i - 1 >= 0 && nums[i - 1] > nums[i + 1]) {
+    			nums[i + 1] = nums[i];
+    		} else {
+    			nums[i] = nums[i + 1];
+    		}
     	}
     }
+    return true;
 };
-console.log(checkPossibility([1,2,3,2,3,6]));
+console.log(checkPossibility([3,4,2,3]));
