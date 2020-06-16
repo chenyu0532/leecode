@@ -17,14 +17,26 @@
 // 说明:
 //     1 <= A.length = A[0].length <= 20
 //     0 <= A[i][j] <= 1
+// var flipAndInvertImage = function(A) {
+//     for(let i = 0; i < A.length; i++){
+//     	let len = A[i].length;
+//     	for(let j = 0; j < len / 2; j++){
+//     		[A[i][j], A[i][len - 1 - j]] = [A[i][len - 1 - j], A[i][j]];
+//     		A[i][j] ^= 1;
+//     		if(j !== len - 1 - j)
+//     			A[i][A[i].length - 1 - j] ^= 1;
+//     	}
+//     }
+//     return A;
+// };
+
+// 也可以用reverse()
+
 var flipAndInvertImage = function(A) {
     for(let i = 0; i < A.length; i++){
-    	let len = A[i].length;
-    	for(let j = 0; j < len / 2; j++){
-    		[A[i][j], A[i][len - 1 - j]] = [A[i][len - 1 - j], A[i][j]];
+    	A[i] = A[i].reverse();
+    	for(let j = 0; j < A[i].length; j++) {
     		A[i][j] ^= 1;
-    		if(j !== len - 1 - j)
-    			A[i][A[i].length - 1 - j] ^= 1;
     	}
     }
     return A;
