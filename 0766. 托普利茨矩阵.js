@@ -32,10 +32,23 @@
 // 进阶:
 //     如果矩阵存储在磁盘上，并且磁盘内存是有限的，因此一次最多只能将一行矩阵加载到内存中，该怎么办？
 //     如果矩阵太大以至于只能一次将部分行加载到内存中，该怎么办？
+
+// var isToeplitzMatrix = function(matrix) {
+//     for(let i = 0; i < matrix.length - 1; i++){
+//         for(let j = 0; j < matrix[i].length - 1; j++){
+//             if(matrix[i][j] !== matrix[i +1][j + 1]){
+//                 return false;
+//             }
+//         }
+//     }
+//     return true;
+// };
+
+// 也可以比较每个元素的左上角元素是否相等
 var isToeplitzMatrix = function(matrix) {
-    for(let i = 0; i < matrix.length - 1; i++){
-        for(let j = 0; j < matrix[i].length - 1; j++){
-            if(matrix[i][j] !== matrix[i +1][j + 1]){
+    for(let i = 1; i < matrix.length; i++){
+        for(let j = 1; j < matrix[i].length; j++){
+            if(matrix[i][j] !== matrix[i - 1][j - 1]){
                 return false;
             }
         }

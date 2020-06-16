@@ -17,7 +17,7 @@
 // 输入: "abcdddeeeeaabbbcd"
 // 输出: [[3,5],[6,9],[12,14]]
 
-// 说明:  1 <= S.length <= 1000
+// 说明:  1 <= S.length <= 1000 
 var largeGroupPositions = function(s) {
 	let res = [];
 	let i = 0;
