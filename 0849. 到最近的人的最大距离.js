@@ -21,25 +21,16 @@
 // 提示：
 //     1 <= seats.length <= 20000
 //     seats 中只含有 0 和 1，至少有一个 0，且至少有一个 1。
+
+// 记录开头0的个数c1  结尾0的个数c2 中间连续0的个数c3 / 2
+// 取
 var maxDistToClosest = function(seats) {
 	let len = seats.length;
-	let left = -1;
-	let maxDis = 0;
-	for(let i = 0; i < len; i++){
-		if(seats[i] === 0) {
-			continue;
-		}
-		if(left === -1) {
-			maxDis = Math.max(maxDis, i);
-		} else {
-			maxDis = Math.max(maxDis, Math.floor((i - left) / 2));
-		}
-		left = i;
+	let count1 = 0;
+	let count2 = 0;
+	while(seats[i] === 0) {
+		
 	}
-	//如果最后一位等于0
-	if(seats[len - 1] === 0) {
-		maxDis = Math.max(maxDis, len - 1 - left);
-	}
-	return maxDis;
+
 };
-console.log(maxDistToClosest([1,0,0,1]));
+console.log(maxDistToClosest([1,0,0,0,1,0,1]));
