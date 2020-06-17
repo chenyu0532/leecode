@@ -27,6 +27,10 @@
 //     1 <= B[i] <= 100000
 //     保证爱丽丝与鲍勃的糖果总量不同。
 //     答案肯定存在。
+
+/// SA - x + y = SB - y + x
+///2 * y = 2 * x + SB - SA;
+///y = x + (SB - SA) / 2
 var fairCandySwap = function(A, B) {
 	let sumA = 0;
 	let sumB = 0;
