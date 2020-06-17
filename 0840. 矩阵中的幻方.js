@@ -26,6 +26,8 @@
 //     0 <= grid[i][j] <= 15
 
 
+////////纯技巧题///////////////
+
 var numMagicSquaresInside = function(grid) {
 	let cnt = 0;
 	let m = grid.length;
