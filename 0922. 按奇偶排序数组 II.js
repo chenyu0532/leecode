@@ -11,20 +11,41 @@
 //     2 <= A.length <= 20000
 //     A.length % 2 == 0
 //     0 <= A[i] <= 1000
+// var sortArrayByParityII = function(A) {
+//     let len = A.length;
+//     for(let i = 0, j = 1; i < len; i += 2,j += 2){
+//     	while(i < len && A[i] % 2 === 0){
+//     		i += 2;
+//     	}
+//     	while(j < len && A[j] % 2 !== 0){
+//     		j += 2;
+//     	}
+//     	if(i < len && j < len){
+// 			[A[i], A[j]] = [A[j], A[i]];
+//     	}
+    	
+//     }
+//     return A;
+// };
+
 var sortArrayByParityII = function(A) {
     let len = A.length;
-    for(let i = 0, j = 1; i < len; i += 2,j += 2){
-    	while(i < len && A[i] % 2 === 0){
-    		i += 2;
+    let res= [];
+    let t = 0;
+    for(let i = 0; i < len; i++) {
+    	if (A[i] % 2 === 0) {
+    		res[t] = A[i];
+    		t += 2;
     	}
-    	while(j < len && A[j] % 2 !== 0){
-    		j += 2;
-    	}
-    	if(i < len && j < len){
-			[A[i], A[j]] = [A[j], A[i]];
-    	}
-    	
     }
-    return A;
+
+    let m = 1;
+    for(let i = 0; i < len; i++) {
+    	if (A[i] % 2 !== 0) {
+    		res[m] = A[i];
+    		m += 2;
+    	}
+    }
+    return res;
 };
 console.log(sortArrayByParityII([2, 3]));
