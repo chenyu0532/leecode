@@ -12,6 +12,8 @@
 //     1 <= A.length <= 10000
 //     -10000 <= A[i] <= 10000
 //     A 已按非递减顺序排序。
+
+/////数据量小的话，用sort都一样
 var sortedSquares = function(A) {
 	let m = 0;
 	let n = A.length - 1;
