@@ -12,7 +12,7 @@
 // 输出：[4,5,5]
 // 解释：274 + 181 = 455
 
-// 示例 3：
+// 示例 3：王芯芯
 // 输入：A = [2,1,5], K = 806
 // 输出：[1,0,2,1]
 // 解释：215 + 806 = 1021
@@ -33,18 +33,21 @@ var addToArrayForm = function(A, K) {
     // let a = parseInt(A.join("")) + K;
     // a = a.toString().split("");
     // return a;
-    for(let i = A.length - 1; i >= 0; i--){
-    	A[i] += K;
-    	K = A[i] / 10;
-    	A[i] = Math.floor(A[i] % 10);
+    let res = []
+    let len = A.length - 1;
+    let cur = K;
+    let flag = false;
+    while(len >= 0 || cur > 0) {
+        if (len >= 0) {
+            cur += A[len];
+        }
+        
+        res.push(cur % 10);
+        cur = Math.floor(cur / 10);
+        len--;
     }
-    //进位
-    while(Math.floor(K) > 0){
-    	A.unshift(Math.floor(K % 10));
-    	K /= 10;
-    }
-    return A;
 
+    return res.reverse();
 };
-console.log(addToArrayForm([2,1,5], 806));
+console.log(addToArrayForm([0], 23));
 
