@@ -25,7 +25,7 @@ var commonChars = function(A) {
     }
     return originalChars;
 };
-console.log(commonChars(["bella","label","roller"]));
+console.log(commonChars(["cool","lock","cook"]));
 
 
 
