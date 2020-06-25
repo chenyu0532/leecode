@@ -56,7 +56,36 @@
  * @return {string}
  */
 var tictactoe = function(moves) {
-    
+    let lastOne = (moves.length - 1) % 2; // 偶数为A  奇数为B
+    let last = moves[moves.length - 1];
+    let lastHe = last[0] + last[1];
+    let lastCha = last[0] - last[1];
+    // 列 行 两条对角线
+    let colCnt = 0, rowCnt = 0, other1Cnt = 0, other2Cnt = 0;
+    for(let i = 0; i < moves.length; i++) {
+    	if (i % 2 === lastOne) {
+    		const move = moves[i];
+    		if (move[0] === last[0]) {
+    			rowCnt++;
+    		}
+    		if (move[1] === last[1]) {
+    			colCnt++;
+    		}
+    		if (move[0] + move[1] === lastHe) {
+    			other1Cnt++;
+    		}
+    		if (move[0] - move[1] === lastCha) {
+    			other2Cnt++;
+    		}
+    	}
+    }
+    if (rowCnt >= 3 || colCnt >= 3 || other1Cnt >= 3 || other2Cnt >= 3) {
+    	return lastOne === 0? 'A': 'B';
+    }
+   	if (moves.length < 9) {
+   		return 'Pending';
+   	}
+   	return 'Draw';
 };
 
 console.log(tictactoe([[0,0],[2,0],[1,1],[2,1],[2,2]]));
