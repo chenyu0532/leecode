@@ -11,47 +11,53 @@
 
 // 输入: a = "1010", b = "1011"
 // 输出: "10101"
-var addBinary = function(a, b) {
-	if(a.length === 1 && b.length === 1){
-		if(a[0] === "0" && b[0] === "0"){
-			return "0";
-		} else if((a[0] === "0" && b[0] === "1") || (a[0] === "1" && b[0] === "0")){
-			return "1";
-		} else {
-			return "10";
-		}
-	}
-    let o = a.length - b.length;
-    if(o > 0){
-    	for(let i = 0; i < o; i++){
-    		b = "0" + b;
-    	}
-    } else if(o < 0) {
-    	for(let i = 0; i < -o; i++){
-    		a = "0" + a;
-    	}
-    }
-    let result = "";
-    let carry = "0";
-    for(let i = a.length - 1; i >= 0; i--){
-    	if(a[i] === "1" && b[i] === "1"){
-    		result = carry + result;
-    		carry = "1";
-    	} else if(a[i] === "0" && b[i] === "0"){
-    		result = carry + result;
-    		carry = "0";
-    	} else if((a[i] === "0" && b[i] === "1") || (a[i] === "1" && b[i] === "0")){
-    		if(carry === "0"){
-    			result = "1" + result;
-    		} else {
-    			result = "0" + result;
-    		}
-    	}
-    }
-    if(carry === "1"){
-    	result = carry + result;
-    }
+
+
+// var addBinary = function(a, b) {
+    // let maxLen = Math.max(a.length, b.length);
+    // a = a.padStart(maxLen, '0');
+    // b = b.padStart(maxLen, '0');
+//     let result = "";
+//     let carry = "0";
+//     for(let i = a.length - 1; i >= 0; i--){
+//     	if(a[i] === "1" && b[i] === "1"){
+//     		result = carry + result;
+//     		carry = "1";
+//     	} else if(a[i] === "0" && b[i] === "0"){
+//     		result = carry + result;
+//     		carry = "0";
+//     	} else if((a[i] === "0" && b[i] === "1") || (a[i] === "1" && b[i] === "0")){
+//     		if(carry === "0"){
+//     			result = "1" + result;
+//     		} else {
+//     			result = "0" + result;
+//     		}
+//     	}
+//     }
+//     if(carry === "1"){
+//     	result = carry + result;
+//     }
     
-    return result;
+//     return result;
+// };
+
+
+////////////这个方法比较好//////////////////////////
+var addBinary = function(a, b) {
+    let maxLen = Math.max(a.length, b.length);
+    a = a.padStart(maxLen, '0');
+    b = b.padStart(maxLen, '0');
+
+    let res = [];
+
+    let hasCarry = false;
+    for(let i = maxLen - 1; i >= 0; i--) {
+        res[i] = Number.parseInt(a[i]) + Number.parseInt(b[i]) + (hasCarry? 0: 1);
+        hasCarry = res[i] > 1;
+        res[i] %= 2;
+    }
+    res = (hasCarry? '1': '') + res.join('');
+    return res;
 };
+
 console.log(addBinary("100", "110010")); //--->110110

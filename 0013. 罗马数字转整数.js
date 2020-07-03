@@ -64,4 +64,4 @@ var romanToInt2 = function(s) {
 	}
 	return result;
 }
-console.log(romanToInt2("IVIV"));
+console.log(romanToInt("LVIII"));
