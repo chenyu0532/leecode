@@ -10,28 +10,43 @@
 // canConstruct("a", "b") -> false
 // canConstruct("aa", "ab") -> false
 // canConstruct("aa", "baab") -> true
+
+
+// var canConstruct = function(ransomNote, magazine) {
+// 	if(ransomNote === magazine){
+// 		return true;
+// 	}
+//     if(ransomNote.length > magazine.length){
+//     	return false;
+//     }
+//     let x; 
+//     magazine=magazine.split("");
+//     for(let i = 0; i < ransomNote.length; i++){ 
+//     	if((x = magazine.indexOf(ransomNote[i])) > -1){ 
+//      		magazine[x] = 0; 
+//      	}
+//      	else{
+//      		return false; 
+//      	} 
+//      } 
+//      return true;
+// };
+
+
 var canConstruct = function(ransomNote, magazine) {
-   // if(ransomNote.length === magazine.length){
-    	if(ransomNote === magazine){
-    		return true;
-    	}
-   // }
-    if(ransomNote.length > magazine.length){
-    	return false;
+    if(ransomNote === magazine){
+        return true;
     }
-    let x; 
-    magazine=magazine.split("");
-    for(let i = 0; i < ransomNote.length; i++){ 
-    	console.log(magazine.indexOf(ransomNote[i]));
-    	if((x = magazine.indexOf(ransomNote[i])) > -1){ 
-     		magazine[x] = 0; 
-     		//console.log(magazine);
-     	}
-     	else{
-     		return false; 
-     	} 
-     } 
-     return true;
+    if(ransomNote.length > magazine.length){
+        return false;
+    }
+    for(let i = 0; i < ransomNote.length; i++) {
+        if(magazine.indexOf(ransomNote[i]) === -1) {
+            return false;
+        }
+        magazine = magazine.replace(ransomNote[i], '');
+    }
+    return true;
  
 };
 console.log(canConstruct("bg", "efjbdfbdgfjhhaiigfhbaejahgfbbgbjagbddfgdiaigdadhcfcj"));

@@ -6,8 +6,10 @@
 // 输出: 2
 // Input: haystack = "aaaaa", needle = "bba"
 // Output: -1
-// 其实可以直接用indexOf
 
+
+
+// 其实可以直接用indexOf
 var strStr = function(haystack, needle) {
     for(let i = 0; ; i++){     //原来for循环还可以省略中间。。。几乎没这么用过。。
     	for(let j = 0; ; j++){

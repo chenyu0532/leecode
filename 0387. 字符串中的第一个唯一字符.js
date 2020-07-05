@@ -10,7 +10,6 @@
 
 // 注意事项：您可以假定该字符串只包含小写字母。
 
-//利用map的特性
 var firstUniqChar = function(s) {
     let map = new Map();
     for(let i = 0; i < s.length; i++){
