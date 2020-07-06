@@ -11,6 +11,7 @@ var reverseWords = function(s) {
     	let tt = v.split("").reverse().join("");
     	res += (tt + " ");
     }
-    return res.replace(/(^\s*)|(\s*$)/g, "");
+    //return res.replace(/(^\s*)|(\s*$)/g, "");///去除最后的空格
+    return res.trim();  ///去除最后的空格
 };
 console.log(reverseWords("Let's take LeetCode contest"));
