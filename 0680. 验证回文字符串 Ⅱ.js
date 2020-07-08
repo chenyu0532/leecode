@@ -37,10 +37,17 @@ var validPalindrome = function(s) {
     return true;
 };
 var equal = function(s, i, j) {
-	let subs = s.substring(i, j + 1);
-	//console.log(subs);
-	let temp = subs.split("").reverse().join("");
-	return subs === temp;
+	// let subs = s.substring(i, j + 1);
+	// let temp = subs.split("").reverse().join("");
+	// return subs === temp;
+
+	/////下面这个竟然比上面的es6的方法要快？我觉得es6的比较fashion啊。。。
+	while (i < j) {
+        if (s[i++] != s[j--]) {
+            return false;
+        }
+    }
+    return true;
 }
 //"ebcbbececabbacecbbcbe"
 // beeee

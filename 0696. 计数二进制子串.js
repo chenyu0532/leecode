@@ -21,18 +21,43 @@
 
 //     s.length 在1到50,000之间。
 //     s 只包含“0”或“1”字符。
+// var countBinarySubstrings = function(s) {
+// 	let result = 0;
+// 	for(let i = 0; i < s.length - 1; i++){
+// 		if(s[i] !== s[i + 1]){ //01或10
+// 			result++;
+// 			let j = 1;
+// 			while(s[i - j] === s[i] && s[i + 1 + j] === s[i + 1]){ //比较01 10的两侧
+// 				result++;
+// 				j++;
+// 			}
+// 		}
+// 	}
+// 	return result;
+// };
+
+
+///////按照字符来/////////////////
+///'0' * k + '1' * k 或者 '1' * K + '0' * k
+/// 例如，如果 s=“11000111000000”，则 groups=[2，3，3，6]。
+///'00111' '11000' 可以生成 2个和 2个，则正好是min(group[i], grouo[i + 1]);
+////找到上面那个规律是重点，略取巧
 var countBinarySubstrings = function(s) {
-	let result = 0;
-	for(let i = 0; i < s.length - 1; i++){
-		if(s[i] !== s[i + 1]){ //01或10
-			result++;
-			let j = 1;
-			while(s[i - j] === s[i] && s[i + 1 + j] === s[i + 1]){ //比较01 10的两侧
-				result++;
-				j++;
-			}
-		}
-	}
-	return result;
+	let groups = [];
+	groups[0] = 1;
+	let cnt = 1, t = 0, i = 0;
+	for (let i = 1; i < s.length; i++) {
+        if (s[i-1] != s[i]) {
+        	t++;
+            groups[t] = 1;
+        } else {
+            groups[t]++;
+        }
+    }
+	let res = 0;
+    for (let i = 1; i <= t; i++) {
+        res += Math.min(groups[i-1], groups[i]);
+    }
+    return res;
 };
-console.log(countBinarySubstrings("00110011"));
+console.log(countBinarySubstrings('10101'));
