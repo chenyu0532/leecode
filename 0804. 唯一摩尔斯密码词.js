@@ -58,24 +58,7 @@ var uniqueMorseRepresentations = function(words) {
     	}
     	strArray.push(res)
     }
-    console.log(strArray);
-    //////这个方法太耗时，用Set结构
- //    strArray.sort(); 
- // 	let newArr = [];
- // 	for (var i = 0; i < strArray.length;) {  
-	//     var count = 0;  
-	//     for (var j = i; j < strArray.length; j++) {  
-	//         if (strArray[i] == strArray[j]) {  
-	//             count++;  
-	//         }  
-	//     }  
-	//     newArr.push([strArray[i], count]);  
-	//     i += count;  
-	// }
-	// console.log(newArr);
-	// return newArr.length;
 	const items = new Set(strArray);
-	console.log(items);
 	return items.size;
     
 };
