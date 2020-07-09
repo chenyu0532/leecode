@@ -26,9 +26,7 @@ var reverseOnlyLetters = function(S) {
 			j--;
 		}
 		//交换
-		let temp = s[j];
-		s[j] = s[i];
-		s[i] = temp;
+		[s[i], s[j]] = [s[j], s[i]];
 	}
 	return s.join('');
 };
