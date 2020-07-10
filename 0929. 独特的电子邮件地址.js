@@ -24,21 +24,29 @@
 //     每封 emails[i] 都包含有且仅有一个 '@' 字符。
 
 var numUniqueEmails = function(emails) {
-	let map = new Map();
-	let count = 0;
-    for(let i = 0; i < emails.length; i++){
-    	let aa = emails[i].split("@")[0];
-    	let aaa = emails[i].split("@")[1];
-    	let bb = aa.split(".").join("");
-    	let index = bb.indexOf("+");
-    	let cc = bb.substring(0, index);
-    	let temp = cc + "@" + aaa;
-    	console.log(temp);
-    	if(!map[temp]){
-    		map[temp] = true;
-    		count++;
-    	}
+	// let map = new Map();
+	// let count = 0;
+ //    for(let i = 0; i < emails.length; i++){
+ //    	let aa = emails[i].split("@")[0];
+ //    	let aaa = emails[i].split("@")[1];
+ //    	let bb = aa.split(".").join("");
+ //    	let index = bb.indexOf("+");
+ //    	let cc = bb.substring(0, index);
+ //    	let temp = cc + "@" + aaa;
+ //    	if(!map[temp]){
+ //    		map[temp] = true;
+ //    		count++;
+ //    	}
+ //    }
+ //    return count;
+
+    let arr = [];
+    for(let i = 0; i < emails.length; i++) {
+        let a = emails[i].split('@');
+        let b = a[0].split('+');
+        let c = b[0].split('.').join('') + '@' + a[1];
+        arr.push(c);
     }
-    return count;
+    return arr.length;
 };
 console.log(numUniqueEmails(["test.email+alex@leetcode.com","test.e.mail+bob.cathy@leetcode.com","testemail+david@lee.tcode.com"]));
