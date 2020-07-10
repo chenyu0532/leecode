@@ -45,6 +45,6 @@ var isLongPressedName = function(name, typed) {
 	}
 	return false;
 };
-// "saeed"
-// "ssaaedd"
-console.log(isLongPressedName("saeed","ssaaedd"));
+// // "saeed"
+// // "ssaaedd"
+console.log(isLongPressedName("leelee","lleeelee"));
