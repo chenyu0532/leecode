@@ -36,12 +36,29 @@
 
 //////要求的是最短的公共前缀，其长度必是str1 str2长度的约数，要不然不能复制几次得到长度相等的字符串
 /////可以枚举符合长度要求的前缀串，再复制若干次 看是否等于str1和str2
+
+let check = function(t, s) {
+	let len = Math.floor(s.length / t.length);
+	let res = '';
+	for(let i = 1; i <= len; i++) {
+		res += t;
+	}
+
+	return res === s;
+}
+
 var gcdOfStrings = function(str1, str2) {
 	let len1 = str1.length;
 	let len2 = str2.length;
-	for(let i = Math.min(len1, len2); i >= 0; i--) {
-		
+	for(let i = Math.min(len1, len2); i >= 1; i--) {
+		if(len1 % i === 0 && len2 % i === 0) {
+			let str = str1.substring(0, i);
+			if (check(str, str1) && check(str, str2)) {
+				return str;
+			}
+		}
 	}
+	return '';
 };
 
 console.log(gcdOfStrings("ABCABC", "ABC"));
