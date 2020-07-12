@@ -35,13 +35,12 @@ var maxNumberOfBalloons = function(text) {
 		return 0;
 	}
 	let arr = [];
-	let cur = 0;
 	for(let key of map.keys()) {
 		if(key === 'l' || key === 'o') {
-			cur = Math.floor(map.get(key) / 2);
+			let cur = Math.floor(map.get(key) / 2);
 			arr.push(cur)
 		} else if(key === 'b' || key === 'a' || key === 'n') {
-			cur = map.get(key);
+			let cur = map.get(key);
 			arr.push(cur)
 		}
 		
