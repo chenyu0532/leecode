@@ -43,14 +43,32 @@
  * @param {string} s
  * @return {string}
  */
-
-
 var sortString = function(s) {
-	s = s.split('').sort((a, b)=>{
-		return a.charCodeAt(0) - b.charCodeAt(0);
-	});
-	let min = [s[0]];
-	//for(let i = 0; i < )
+	let a = ['a', 'b', 'c', 'd', 'e', 'f', 'g',
+			 'h', 'i', 'j', 'k', 'l', 'm', 'n',
+			 'o', 'p', 'q', 'r', 's', 't', 'u',
+			 'v', 'w', 'x', 'y', 'z'];
+	let res = '';
+	let arr = new Array(26).fill(0);
+	for(let i = 0; i < s.length; i++) {
+		arr[s[i].charCodeAt(0) - 'a'.charCodeAt(0)]++;
+	}
+	while(res.length < s.length) {
+		for(let i = 0; i < 26; i++) {
+			if (arr[i] > 0) {
+				res += a[i];
+				arr[i]--;
+			}
+		}
+		for(let i = 25; i >= 0; i--) {
+			if (arr[i] > 0) {
+				res += a[i];
+				arr[i]--;
+			}
+		}
+	}
+	return res;
 };
-console.log(sortString("leetcode"))
+
+console.log(sortString("ggggggg"));
 
