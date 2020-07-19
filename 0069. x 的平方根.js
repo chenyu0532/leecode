@@ -13,15 +13,15 @@
 //      由于返回类型是整数，小数部分将被舍去。
 
 //这样查找耗时太长
-var mySqrt = function(x) {
-    for(let i = 0; i <= x; i++){
-    	if(i * i === x){
-    		return i;
-    	} else if(i * i > x){
-    		return i - 1;
-    	}
-    }
-};
+// var mySqrt = function(x) {
+//     for(let i = 0; i <= x; i++){
+//     	if(i * i === x){
+//     		return i;
+//     	} else if(i * i > x){
+//     		return i - 1;
+//     	}
+//     }
+// };
 //二分查找
 var mySqrt2 = function(x) {
 	if(x === 0){
