@@ -21,6 +21,9 @@
 // 示例 3:
 // 输入: "ZY"
 // 输出: 701
+
+
+//////26进制  类似于 2×103+0×102+1×101+9×100=2019
 var titleToNumber = function(s) {
 	let arr = {"A": 1, "B":2, "C":3, "D":4, "E":5, "F":6, "G":7, "H":8, "I":9,
 				"J":10, "K":11, "L":12, "M":13, "N":14, "O":15, "P":16, "Q":17,"R":18,
@@ -31,6 +34,6 @@ var titleToNumber = function(s) {
     }
     return result;
 };
-console.log(titleToNumber("ZY"));
+console.log(titleToNumber("AB"));
 
 

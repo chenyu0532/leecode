@@ -10,31 +10,13 @@
 // 输出: 1
 // 解释: 5! = 120, 尾数中有 1 个零.
 
-//这样的话 result的值可能会超过最大值
-// var trailingZeroes = function(n) {
-// 	let result = 1;
-//     for(let i = n; i > 0; i--){
-//     	result *= i;
-//     }
-//     console.log(result);
-//     let str = result.toString();
-//     let num = 0;
-//     for(let i = str.length - 1; i >= 0; i--){
-//     	if(str[i] == 0){
-//     		num++;
-//     	} else {
-//     		break;
-//     	}
-//     }
-//     return num;
-// };
+///肯定不能用阶乘，数大的话就死掉了
 
-//有多少0，即使求有多少个5
+//有多少0，即使求有多少个2和5，因为只有2*5最后才有0,又因为2的数量肯定比5多，所以只需要求5的数量即可
 var trailingZeroes = function(n) {
 	let count = 0;
-	let flag = 5;
-	while(flag <= n){
-		count += Math.floor(n / flag);
+	while(n >= 5){
+		count += Math.floor(n / 5);
 		flag *= 5;
 	}
 	return count;
